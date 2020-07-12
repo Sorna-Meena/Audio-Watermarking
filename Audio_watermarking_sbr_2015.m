@@ -12,16 +12,16 @@ audio2=0;
 audio3=0;
 audio4=1;
  if audio1
-[y,Fs] = audioread('audio1.wav');
+[y,Fs] = audioread('classical.wav');
  end
  if audio2
-[y,Fs] = audioread('audio2.wav');
+[y,Fs] = audioread('pop.wav');
  end
  if audio3
-[y,Fs] = audioread('audio3.wav');
+[y,Fs] = audioread('jazz.wav');
  end
  if audio4
-[y,Fs] = audioread('audio4.mp3');
+[y,Fs] = audioread('LoopyMusic.mp3');
  end
 x1=y(1:262144);
 x1=reshape(x1,1,262144);
