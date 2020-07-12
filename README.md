@@ -1,3 +1,5 @@
+<b> Audio Watermarking </b>
+<p>
 Watermarking is the process of embedding information into a signal (e.g. audio, video or pictures) 
 in a way that is difficult to remove. If the signal is copied, then the information is also carried in the 
 copy. Watermarking has become increasingly important to enable copyright protection and 
@@ -15,3 +17,4 @@ common operations of digital audio signal processing, such as white Gaussian noi
 compression and low pass filtering. To evaluate the performance of the proposed audio 
 watermarking method, subjective and objective quality tests including Bit Error Rate (BER) and 
 Signal to Noise ratio (SNR) are calculated.
+</p>
