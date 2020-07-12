@@ -1,30 +1,27 @@
 % Robust Blind Digital Audio Watermarking                                   
 % Implementation Based on Watermark Scrambling Algorithm-Arnold Transform   
 % Discrete Wavelet Transform,Discrete Cosine Transform,Erro Correcting Code 
-% Coded by Subir, Undergraduate Sudent, ECE, LNMIIT, Jaipur                 
-% Under Guidance of Prof. Amit M. Joshi, MNIT, Jaipur                       
-
 clc
 clear all
 close all
 warning off
 
 %% audio input
-ok_classical=1;   % 1 selected 0 not-selected
-ok_jazz=0;
-ok_pop=0;
-ok_looney=0;
- if ok_classical
-[y,Fs] = audioread('classical.wav');
+audio1=0;   % 1 selected 0 not-selected
+audio2=0;
+audio3=0;
+audio4=1;
+ if audio1
+[y,Fs] = audioread('audio1.wav');
  end
- if ok_jazz
-[y,Fs] = audioread('jazz.wav');
+ if audio2
+[y,Fs] = audioread('audio2.wav');
  end
- if ok_pop
-[y,Fs] = audioread('pop.wav');
+ if audio3
+[y,Fs] = audioread('audio3.wav');
  end
- if ok_looney
-[y,Fs] = audioread('loopyMusic.wav');
+ if audio4
+[y,Fs] = audioread('audio4.mp3');
  end
 x1=y(1:262144);
 x1=reshape(x1,1,262144);
@@ -304,13 +301,14 @@ SNR=snr(y1,x1)
 y2=reshape(newx,1,512*512);
 figure
 plot(y2)
+sound(y2,Fs,24);
 title('Watermarked Audio');
 xlabel(' Time(Samples) ');
 ylabel(' Amplitude');
 L=length(y1);
 %% DISTURBANCE ADDED TO THE WATERMARKED AUDIO
 
-ok_noise =0;
+ok_noise =1;
 ok_filtering=0;
 ok_cropping=0;
 ok_resampling=0;
@@ -506,9 +504,15 @@ figure
 imshow(sbr)
 title(' Extracted Watermark ')
 %% Quality check
+SNR_afternoise=snr(y1,x1)
 figure
-plot(imabsdiff(y2,reshape(x,1,512*512)))
+plot(imabsdiff(y2,reshape(x1,1,512*512)))
 title(' Absolute difference between Host and Watermarked Audio Signal');
+xlabel(' Time(Samples)')
+ylabel(' Amplitude')
+figure
+plot(imabsdiff(y1,reshape(x1,1,512*512)))
+title(' Absolute difference between Host and Watermarked Audio Signal with disturbance');
 xlabel(' Time(Samples)')
 ylabel(' Amplitude')
 
@@ -523,37 +527,6 @@ for i = 1:10
 end
 figure
 plot(qualityFactor,ssimValues,'r--*')
-xlabel(' Copression Quality Factor');
+xlabel(' Compression Quality Factor');
 ylabel(' SSIM value');
 %% END %%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
